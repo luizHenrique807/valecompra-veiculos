@@ -5,7 +5,6 @@ import { ArrowRight, ArrowLeft, CheckCircle2, Loader2, LockKeyhole, CircleCheck 
 import { Button } from '@/components/ui/button';
 import { cities, statuses, firstStepSchema, leadSchema, maskPhone } from '@/lib/lead-schema';
 import { submitLead } from '@/lib/leads.functions';
-import { requestPhotoUploads, confirmPhotoUploads } from '@/lib/photos.functions';
 import { checkPhotos } from '@/lib/photo-rules';
 import { supabase } from '@/integrations/supabase/client';
 import { trackLead } from './pixel';
@@ -25,8 +24,6 @@ export function LeadForm() {
  const stepTitle = useRef<HTMLDivElement>(null);
  const successPanel = useRef<HTMLDivElement>(null);
  const send = useServerFn(submitLead);
- const askUploads = useServerFn(requestPhotoUploads);
- const confirmUploads = useServerFn(confirmPhotoUploads);
  const [photos, setPhotos] = useState<File[]>([]);
  const [photoNote, setPhotoNote] = useState('');
  function pickPhotos(list: FileList | null) {
@@ -65,12 +62,14 @@ export function LeadForm() {
    if (response.ok) {
     if (photos.length) {
      try {
-      const ref = { lead_id: result.data.id, whatsapp: result.data.whatsapp };
-      const req = await askUploads({ data: { ...ref, files: photos.map(p => ({ type: p.type as 'image/jpeg', size: p.size })) } });
-      if (!req.ok) throw new Error();
-      const results = await Promise.all(req.uploads.map((u, i) => supabase.storage.from('lead-photos').uploadToSignedUrl(u.path, u.token, photos[i]!, { contentType: photos[i]!.type })));
-      const done = await confirmUploads({ data: ref });
-      if (results.some(r => r.error) || !done.ok || done.count < photos.length) setPhotoNote('Sua solicitação foi recebida, mas nem todas as fotos foram enviadas. Você poderá enviá-las durante o contato.');
+      const bytes = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(result.data.whatsapp));
+      const proof = Array.from(new Uint8Array(bytes)).map(b=>b.toString(16).padStart(2,'0')).join('');
+      const extension:Record<string,string>={'image/jpeg':'jpg','image/png':'png','image/webp':'webp'};
+      const uploads = await Promise.all(photos.map(photo=>{
+       const path=`${result.data.id}/${proof}-${crypto.randomUUID()}.${extension[photo.type]}`;
+       return supabase.storage.from('lead-photos').upload(path,photo,{contentType:photo.type,upsert:false});
+      }));
+      if (uploads.some(u=>u.error)) setPhotoNote('Sua solicitação foi recebida, mas nem todas as fotos foram enviadas. Você poderá enviá-las durante o contato.');
      } catch { setPhotoNote('Sua solicitação foi recebida, mas as fotos não puderam ser enviadas. Você poderá enviá-las durante o contato.'); }
     }
     setSuccess(true);

@@ -4,16 +4,19 @@ import { z } from 'zod';
 import { leadSchema } from './lead-schema';
 import { requireSupabaseAuth } from '@/integrations/supabase/auth-middleware';
 export const submitLead = createServerFn({method:'POST'}).inputValidator((input:unknown)=>leadSchema.parse(input)).handler(async({data})=>{
- const { supabaseAdmin } = await import('@/integrations/supabase/client.server');
+ const { createClient } = await import('@supabase/supabase-js');
+ const url=process.env['SUPABASE_URL'],key=process.env['SUPABASE_PUBLISHABLE_KEY'];
+ if(!url||!key)return {ok:false as const,message:'Cadastro indisponível: conexão com banco não configurada.'};
+ const publicClient=createClient(url,key,{auth:{persistSession:false,autoRefreshToken:false}});
  const request=getRequest();
  const ip=request.headers.get('cf-connecting-ip') || request.headers.get('x-vercel-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
  const bytes=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(ip));
  const key=Array.from(new Uint8Array(bytes)).map(v=>v.toString(16).padStart(2,'0')).join('');
- const {data:allowed,error:limitError}=await supabaseAdmin.rpc('consume_lead_limit',{_key:key});
+ const {data:allowed,error:limitError}=await publicClient.rpc('consume_lead_limit',{_key:key});
  if(limitError || !allowed)return {ok:false as const,message:'Não foi possível enviar agora. Aguarde e tente novamente.'};
- const { error }=await supabaseAdmin.from('leads').insert({...data});
+ const { error }=await publicClient.from('leads').insert({...data});
  if(error){
-  if(error.code==='23505'){const {data:existing}=await supabaseAdmin.from('leads').select('id').eq('id',data.id).eq('whatsapp',data.whatsapp).maybeSingle();if(existing)return {ok:true as const};}
+  if(error.code==='23505')return {ok:true as const};
   return {ok:false as const,message:'Não foi possível confirmar o envio. Seus dados continuam aqui; tente novamente mais tarde.'};
  }
  return {ok:true as const};
