@@ -36,3 +36,7 @@ GRANT EXECUTE ON FUNCTION public.consume_lead_limit(text) TO service_role;
 INSERT INTO storage.buckets (id,name,public,file_size_limit,allowed_mime_types)
 VALUES ('lead-photos','lead-photos',false,5242880,ARRAY['image/jpeg','image/png','image/webp'])
 ON CONFLICT (id) DO UPDATE SET public=false,file_size_limit=5242880,allowed_mime_types=ARRAY['image/jpeg','image/png','image/webp'];
+
+-- Restrict direct execution of privileged trigger function.
+REVOKE EXECUTE ON FUNCTION public.validate_lead() FROM PUBLIC, anon, authenticated;
+GRANT EXECUTE ON FUNCTION public.validate_lead() TO service_role;
