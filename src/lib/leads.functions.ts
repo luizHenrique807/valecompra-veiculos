@@ -5,9 +5,9 @@ import { leadSchema } from './lead-schema';
 import { requireSupabaseAuth } from '@/integrations/supabase/auth-middleware';
 export const submitLead = createServerFn({method:'POST'}).inputValidator((input:unknown)=>leadSchema.parse(input)).handler(async({data})=>{
  const { createClient } = await import('@supabase/supabase-js');
- const url=process.env['SUPABASE_URL'],key=process.env['SUPABASE_PUBLISHABLE_KEY'];
- if(!url||!key)return {ok:false as const,message:'Cadastro indisponível: conexão com banco não configurada.'};
- const publicClient=createClient(url,key,{auth:{persistSession:false,autoRefreshToken:false}});
+ const url=process.env['SUPABASE_URL'],publishableKey=process.env['SUPABASE_PUBLISHABLE_KEY'];
+ if(!url||!publishableKey)return {ok:false as const,message:'Cadastro indisponível: conexão com banco não configurada.'};
+ const publicClient=createClient(url,publishableKey,{auth:{persistSession:false,autoRefreshToken:false}});
  const request=getRequest();
  const ip=request.headers.get('cf-connecting-ip') || request.headers.get('x-vercel-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
  const bytes=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(ip));
