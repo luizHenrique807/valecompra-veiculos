@@ -1,0 +1,20 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1791952573553,
+      "tag": "0000_valecompra_leads_security",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1791952895220,
+      "tag": "0001_restrict_lead_trigger_execution",
+      "breakpoints": true
+    }
+  ]
+}
