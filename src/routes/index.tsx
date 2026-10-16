@@ -1,14 +1,143 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
-import { ArrowRight, ArrowUpRight, MapPin, CheckCircle2, CarFront, FileCheck2, BadgeDollarSign, ClipboardList, CircleAlert, MoveRight, Handshake, ShieldCheck, Plus } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, BadgeCheck, CalendarClock, CheckCircle2, ClipboardCheck, FileWarning, MapPin, ShieldCheck, Wallet } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Brand } from '@/components/valecompra/brand';
 import { LeadForm } from '@/components/valecompra/lead-form';
 import { PixelConsent } from '@/components/valecompra/pixel';
 import hero from '@/assets/valecompra-car.svg';
-export const Route=createFileRoute('/')({component:Index,head:()=>({meta:[{title:'Antes de anunciar, veja se podemos comprar seu carro | ValeCompra Veículos'},{name:'description',content:'Pensando em vender seu carro? Avaliamos carros populares, quitados, financiados e com pendências em São José dos Campos, Jacareí, Caçapava e Taubaté. Gratuito e sem compromisso.'},{property:'og:title',content:'Antes de anunciar, veja se podemos comprar seu carro | ValeCompra'},{property:'og:description',content:'Converse diretamente com quem analisa a compra. Carros quitados, financiados e com pendências podem passar por avaliação individual.'},{property:'og:type',content:'website'},{property:'og:locale',content:'pt_BR'},{name:'twitter:card',content:'summary_large_image'}]})});
-function EvaluateButton({label='Quero avaliar meu carro',small=false}:{label?:string;small?:boolean}){return <Button asChild size={small?'default':'lg'} className={small?'h-10 text-xs font-bold':'h-12 text-xs font-bold px-6'}><a href="#avaliacao">{label}<ArrowUpRight/></a></Button>}
-const roadblocks=[{number:'01',title:'Mensagens que não avançam',text:'O interessado pergunta, pede fotos, combina horários... e a conversa pode terminar sem proposta.'},{number:'02',title:'Dúvida sobre financiamento',text:'O carro ainda está financiado e você não sabe como apresentar essa situação numa possível venda.'},{number:'03',title:'Pendências e documentação',text:'IPVA, multas ou parcelas em atraso geram perguntas antes mesmo de começar a negociação.'}];
-const vehicles=[{icon:CarFront,title:'Carros populares e usados',text:'Gol, Onix, HB20, Palio, Uno, Kwid, Argo e outros carros do dia a dia.'},{icon:FileCheck2,title:'Carros financiados',text:'Avaliamos o veículo e o saldo devedor, respeitando as condições do credor.'},{icon:BadgeDollarSign,title:'Carros com parcelas atrasadas',text:'Entendemos a situação do financiamento antes de propor uma negociação.'},{icon:ClipboardList,title:'IPVA, multas e pendências',text:'Débitos e documentação são analisados individualmente, com transparência.'}];
-const steps=[['Conte sobre o carro','Em duas etapas, envie modelo, ano, cidade, contato e situação do veículo. Você pode incluir até 5 fotos.'],['Nós analisamos o cenário','Avaliamos as informações, as condições do veículo e eventuais pendências antes de falar em compra.'],['Entramos em contato','Se houver possibilidade de seguir, nossa equipe chama você no WhatsApp cadastrado para entender os detalhes.'],['Você decide se negocia','Caso exista uma proposta viável, explicamos as condições e os próximos passos. Nada é obrigatório.']];
-const faqs=[['Preciso anunciar meu carro antes de solicitar a avaliação?','Não. Você pode enviar os dados diretamente para a ValeCompra. A solicitação é uma análise inicial e não garante proposta ou compra.'],['Preciso quitar tudo antes de enviar o cadastro?','Não necessariamente para solicitar a avaliação. Informe a situação real do carro; saldos de financiamento, multas e demais débitos serão considerados na análise. A venda e a transferência, se ocorrerem, exigem a regularização aplicável.'],['Quem chama no WhatsApp?','Nossa equipe entra em contato pelo número informado caso a análise avance. Você não precisa iniciar uma conversa com a ValeCompra.'],['É obrigatório enviar fotos?','Não. Você pode enviar até cinco fotos do carro, mas o envio é opcional. Se puder, elas ajudam a apresentar o estado do veículo.'],['Vocês avaliam carros financiados?','Sim. Avaliamos o carro, o saldo devedor e as condições do contrato. A negociação depende da análise e da quitação do gravame perante o credor para a transferência regular. Não há assunção automática do financiamento.'],['Meu carro tem multas ou IPVA atrasado. Posso enviar?','Pode enviar os dados. Os débitos e a situação legal serão analisados individualmente. Não garantimos a compra nem a quitação de qualquer dívida.'],['A avaliação é gratuita?','Sim. A avaliação é gratuita e sem compromisso. Você não é obrigado a aceitar a proposta.'],['Quanto tempo leva para receber uma proposta?','O prazo depende das informações recebidas, das condições do veículo e da verificação documental. Não há um prazo garantido.'],['Sou obrigado a vender depois da avaliação?','Não. Você pode analisar a proposta e decidir livremente se deseja continuar a negociação.'],['Como ocorre o pagamento e a transferência?','As condições e a sequência do pagamento serão definidas em contrato, conforme a análise e a regularização documental. A transferência segue as exigências legais, incluindo a baixa do gravame quando houver financiamento.']];
-function Index(){return <><a href="#conteudo" className="sr-only focus:not-sr-only">Ir para o conteúdo</a><header className="site-header"><div className="container header-inner"><Brand/><nav className="header-nav" aria-label="Navegação principal"><a className="nav-link" href="#como-funciona">Como funciona</a><a className="nav-link" href="#duvidas">Dúvidas frequentes</a><EvaluateButton small label="Avaliar meu carro"/></nav></div></header><main id="conteudo"><section className="hero"><img className="hero-photo" src={hero} width={1536} height={1024} fetchPriority="high" alt="Chevrolet Onix prata, carro popular, em uma rua residencial"/><div className="container hero-layout"><div className="hero-copy"><p className="eyebrow region-eyebrow"><MapPin size={13}/><span>São José dos Campos · Jacareí<br className="region-break"/> · Caçapava · Taubaté</span></p><div className="vc-hero-tag">AVALIAÇÃO DIRETA · SEM ANUNCIAR EM CLASSIFICADOS</div><h1>Antes de anunciar seu carro, <span>veja se podemos comprá-lo.</span></h1><p className="hero-description">Tirar fotos, responder perguntas, marcar visitas... e nem sempre chegar a uma proposta. <strong>Existe outra forma de começar:</strong> envie os dados diretamente para quem avalia a possibilidade de compra.</p><p className="vc-hero-context">Quitado, financiado, com parcelas atrasadas ou multas? <strong>Conte a situação real do veículo.</strong> Analisamos cada caso, sem promessas antecipadas.</p><div className="hero-actions"><EvaluateButton/></div><div className="trust-list">{['Avaliação gratuita','Sem obrigação de vender','Envio em 2 etapas'].map(t=><span className="trust-item" key={t}><CheckCircle2/>{t}</span>)}</div><p className="hero-caption"><ShieldCheck size={14}/> Você recebe uma análise inicial. Uma proposta depende da verificação do veículo e da documentação.</p></div><LeadForm/></div></section><section className="vc-friction-section" aria-labelledby="vc-friction-title"><div className="container"><div className="vc-friction-heading"><div><span className="eyebrow">O QUE NEM SEMPRE APARECE NO ANÚNCIO</span><h2 id="vc-friction-title">A parte cansativa da venda <span>começa antes da negociação.</span></h2></div><p>Quem já tentou vender um carro conhece o caminho: preparar as fotos, explicar tudo várias vezes, responder interessados e torcer para a conversa avançar. Com pendências, surgem ainda mais dúvidas.</p></div><div className="vc-friction-grid">{roadblocks.map(({number,title,text})=><article className="vc-friction-card" key={number}><span className="vc-friction-index">{number}</span><h3>{title}</h3><p>{text}</p></article>)}</div><div className="vc-friction-bottom"><div><strong>Você não precisa resolver tudo sozinho para começar.</strong><p>Primeiro, vamos entender se seu carro pode entrar numa negociação direta.</p></div><EvaluateButton label="Enviar meu carro para análise" small/></div></div></section><section className="section vc-vehicle-section"><div className="container"><div className="center-heading"><span className="eyebrow">NÃO DESCARTE A POSSIBILIDADE ANTES DA ANÁLISE</span><h2 className="section-heading">Mesmo com pendências, seu carro pode ser avaliado.</h2><p className="section-intro">A situação do veículo importa. Mas você pode nos contar os detalhes antes de concluir que não há alternativa de negociação.</p></div><div className="vehicle-grid">{vehicles.map(({icon:Icon,title,text})=><article className="vehicle-card" key={title}><Icon strokeWidth={1.4}/><h3>{title}</h3><p>{text}</p></article>)}</div><p className="analysis-note"><CircleAlert/>Cada negociação depende de análise do veículo, documentação, débito e situação legal.</p></div></section><section className="section paper-section" id="como-funciona"><div className="container"><span className="eyebrow">COMO A VALECOMPRA AVALIA</span><h2 className="section-heading">Sem atalhos milagrosos. Com um processo claro.</h2><p className="section-intro">Você nos apresenta o carro, analisamos a possibilidade de compra e só avançamos se fizer sentido para os dois lados.</p><div className="steps-grid">{steps.map(([title,text],i)=><article className="process-step" key={title}><div className="step-number">0{i+1}<MoveRight/></div><h3>{title}</h3><p>{text}</p></article>)}</div><p className="legal-note">Em veículos financiados, a negociação considera o saldo devedor e a quitação perante o credor. A baixa do gravame e a transferência devem seguir as exigências legais. Nenhuma dívida ou financiamento é assumido automaticamente.</p></div></section><section className="section"><div className="container area-layout"><div><span className="eyebrow">GENTE DA SUA REGIÃO</span><h2 className="section-heading">A avaliação começa aqui no Vale do Paraíba.</h2><p className="section-intro">Não precisa colocar um anúncio no ar para iniciar uma conversa sobre a venda.<br/>Atendemos solicitações de proprietários da região.</p></div><div className="city-grid">{['São José dos Campos','Jacareí','Caçapava','Taubaté'].map(c=><div className="city" key={c}><MapPin/>{c}</div>)}</div></div></section><section className="benefits"><div className="container benefits-grid">{[{icon:Handshake,title:'Você continua no controle',text:'Solicitar uma análise não obriga a vender nem a aceitar uma proposta.'},{icon:ShieldCheck,title:'Contato iniciado por nossa equipe',text:'Se a avaliação avançar, falamos no WhatsApp informado. Não precisa nos chamar.'},{icon:FileCheck2,title:'Conversa com as condições reais',text:'Carro, financiamento e documentação entram na análise desde o início.'}].map(({icon:Icon,title,text})=><div className="benefit" key={title}><Icon strokeWidth={1.5}/><div><h3>{title}</h3><p>{text}</p></div></div>)}</div></section><section className="section" id="duvidas"><div className="container faq-layout"><div><span className="eyebrow">ANTES DE ENVIAR SEU CARRO</span><h2 className="section-heading">O que vale saber antes de começar.</h2><p className="section-intro">Entenda como funciona a avaliação, mesmo com financiamento ou débitos.</p><div className="mt-7"><EvaluateButton small/></div></div><div className="faq-list">{faqs.map(([q,a])=><details key={q}><summary>{q}<Plus/></summary><p>{a}</p></details>)}</div></div></section><section className="final-cta"><div className="container final-cta-inner"><div><h2>Ainda está pensando em anunciar?</h2><p>Comece pela avaliação direta. Envie as informações do seu carro e veja se podemos seguir com uma negociação — gratuita e sem obrigação de vender.</p></div><EvaluateButton/></div></section></main><footer className="footer"><div className="container"><div className="footer-top"><Brand/><div className="footer-links"><span>São José dos Campos · Jacareí · Caçapava · Taubaté</span><Link to="/privacidade">Privacidade</Link></div></div><div className="footer-bottom"><p>© {new Date().getFullYear()} ValeCompra Veículos. Empresa independente, sem vínculo com fabricantes ou instituições financeiras.</p><p>Negociação sujeita à análise e verificação documental.</p></div></div></footer><PixelConsent/></>}
+
+export const Route = createFileRoute('/')({
+  component: Index,
+  head: () => ({
+    meta: [
+      { title: 'Carro com parcelas atrasadas, multas ou IPVA? | ValeCompra Veículos' },
+      { name: 'description', content: 'Carro financiado, parcelas atrasadas, multas ou IPVA vencido? Solicite uma avaliação gratuita da ValeCompra Veículos em São José dos Campos, Jacareí, Caçapava e Taubaté. Sem compromisso.' },
+      { property: 'og:title', content: 'Parcelas atrasadas ou multas? Avalie seu carro | ValeCompra' },
+      { property: 'og:description', content: 'Seu carro tem pendências? Conte a situação e veja se podemos negociar. Avaliação gratuita e sem compromisso.' },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:locale', content: 'pt_BR' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+    ],
+  }),
+});
+
+function EvaluateButton({ label = 'Quero avaliar meu carro', compact = false }: { label?: string; compact?: boolean }) {
+  return (
+    <Button asChild size={compact ? 'default' : 'lg'} className={compact ? 'vc-simple-button vc-simple-button-small' : 'vc-simple-button'}>
+      <a href="#avaliacao">{label}<ArrowUpRight size={17} aria-hidden="true" /></a>
+    </Button>
+  );
+}
+
+const situations = [
+  {
+    icon: CalendarClock,
+    title: 'Parcelas atrasadas',
+    text: 'O financiamento está atrasado? Informe a situação para avaliarmos o carro e os débitos.',
+  },
+  {
+    icon: FileWarning,
+    title: 'IPVA ou multas em aberto',
+    text: 'Tem débitos ou documentação pendente? Podemos analisar o caso antes de uma eventual negociação.',
+  },
+  {
+    icon: BadgeCheck,
+    title: 'Financiado em dia ou quitado',
+    text: 'Também avaliamos carros populares usados que estão financiados em dia ou já quitados.',
+  },
+];
+
+const steps = [
+  { number: '01', title: 'Envie os dados', text: 'Preencha o formulário e, se quiser, adicione até 5 fotos do carro.' },
+  { number: '02', title: 'Analisamos o carro', text: 'Verificamos as informações e as pendências para avaliar a possibilidade de compra.' },
+  { number: '03', title: 'Entramos em contato', text: 'Se houver possibilidade de negociação, nossa equipe chama você no WhatsApp informado.' },
+];
+
+function Index() {
+  return (
+    <>
+      <a href="#conteudo" className="sr-only focus:not-sr-only">Ir para o conteúdo</a>
+      <header className="site-header vc-simple-header">
+        <div className="container header-inner">
+          <Brand />
+          <nav className="header-nav" aria-label="Ação principal">
+            <EvaluateButton label="Avaliar meu carro" compact />
+          </nav>
+        </div>
+      </header>
+
+      <main id="conteudo" className="vc-simple-page">
+        {/* Seção 1: dor real + cadastro, lado a lado. */}
+        <section className="hero vc-simple-hero" aria-labelledby="vc-hero-title">
+          <img className="hero-photo" src={hero} width={1440} height={960} fetchPriority="high" alt="" aria-hidden="true" />
+          <div className="container hero-layout">
+            <div className="hero-copy">
+              <p className="eyebrow region-eyebrow"><MapPin size={15} aria-hidden="true" /> São José dos Campos · Jacareí · Caçapava · Taubaté</p>
+              <span className="vc-simple-eyebrow">COMPRAMOS CARROS POPULARES E USADOS</span>
+              <h1 id="vc-hero-title">Parcelas atrasadas, multas ou <span>IPVA vencido?</span></h1>
+              <p className="vc-simple-hero-question">Quer vender seu carro mesmo assim?</p>
+              <p className="hero-description">Sabemos que vender um carro com pendências pode ser complicado. <strong>Conte a situação do seu veículo.</strong> A ValeCompra analisa se existe possibilidade de compra, sem compromisso.</p>
+              <div className="hero-actions"><EvaluateButton /></div>
+              <div className="trust-list" aria-label="Vantagens da avaliação">
+                <span className="trust-item"><CheckCircle2 aria-hidden="true" /> Avaliação gratuita</span>
+                <span className="trust-item"><CheckCircle2 aria-hidden="true" /> Sem obrigação de vender</span>
+              </div>
+              <p className="hero-caption"><ShieldCheck size={15} aria-hidden="true" /> Toda negociação está sujeita à análise do veículo e à regularização documental.</p>
+            </div>
+            <LeadForm />
+          </div>
+        </section>
+
+        {/* Seção 2: identificação imediata. */}
+        <section className="vc-simple-situations" aria-labelledby="vc-situations-title">
+          <div className="container">
+            <p className="eyebrow">PODEMOS ANALISAR DIFERENTES SITUAÇÕES</p>
+            <h2 id="vc-situations-title">Seu carro está em uma dessas condições?</h2>
+            <div className="vc-simple-situation-grid">
+              {situations.map(({ icon: Icon, title, text }) => (
+                <article className="vc-simple-situation-card" key={title}>
+                  <span className="vc-simple-situation-icon"><Icon size={23} strokeWidth={1.7} aria-hidden="true" /></span>
+                  <div><h3>{title}</h3><p>{text}</p></div>
+                </article>
+              ))}
+            </div>
+            <p className="vc-simple-situation-note"><ShieldCheck size={15} aria-hidden="true" /> A avaliação não garante compra ou quitação de dívidas. Cada caso depende de análise.</p>
+          </div>
+        </section>
+
+        {/* Seção 3: processo simples + última chamada. */}
+        <section className="vc-simple-process" id="como-funciona" aria-labelledby="vc-process-title">
+          <div className="container">
+            <p className="eyebrow">RÁPIDO DE ENTENDER</p>
+            <h2 id="vc-process-title">Como funciona a avaliação?</h2>
+            <div className="vc-simple-step-grid">
+              {steps.map(({ number, title, text }) => (
+                <article className="vc-simple-step" key={number}>
+                  <span>{number}</span>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </article>
+              ))}
+            </div>
+            <div className="vc-simple-last-cta">
+              <div><strong>Quer saber se podemos comprar seu carro?</strong><p>Envie os dados e a situação atual. É gratuito e sem obrigação de vender.</p></div>
+              <EvaluateButton label="Solicitar avaliação gratuita" compact />
+            </div>
+            <p className="vc-simple-disclaimer">Financiamentos, débitos e gravames devem ser regularizados conforme as exigências legais e do credor para uma eventual transferência. Não assumimos financiamentos automaticamente.</p>
+          </div>
+        </section>
+      </main>
+
+      <footer className="footer vc-simple-footer">
+        <div className="container vc-simple-footer-inner">
+          <Brand />
+          <div>
+            <p>São José dos Campos · Jacareí · Caçapava · Taubaté</p>
+            <p>© {new Date().getFullYear()} ValeCompra Veículos · <Link to="/privacidade">Política de Privacidade</Link></p>
+          </div>
+        </div>
+      </footer>
+      <PixelConsent />
+    </>
+  );
+}

@@ -84,8 +84,8 @@ export function LeadForm() {
  }
  return <section ref={formSection} className="lead-form" id="avaliacao" aria-label="Solicitar avaliação do veículo">
   {success ? <div ref={successPanel} tabIndex={-1} className="form-success" role="status"><CheckCircle2 size={48} aria-hidden="true" /><h2>Solicitação recebida.</h2><p>Seus dados foram enviados para análise. O contato será pelo WhatsApp informado.</p>{photoNote && <p>{photoNote}</p>}<p>A avaliação é gratuita e não obriga você a vender. Proposta e compra dependem da análise.</p></div> : <>
-   <div className="form-eyebrow"><CircleCheck size={15} aria-hidden="true" /> AVALIAÇÃO GRATUITA · SEM COMPROMISSO</div>
-   <h2>Seu carro pode entrar numa negociação?</h2><p className="form-subtitle">Conte sobre ele em 2 etapas. Não pedimos placa, CPF ou dados bancários neste primeiro contato.</p>
+   <div className="form-eyebrow"><CircleCheck size={15} aria-hidden="true" /> GRATUITA · SEM OBRIGAÇÃO DE VENDER</div>
+   <h2>Solicite a avaliação do seu carro</h2><p className="form-subtitle">Preencha em 2 etapas. Não pedimos CPF, placa ou dados bancários.</p>
    <div ref={stepTitle} tabIndex={-1} className="step-row step-title" aria-live="polite"><span>Etapa {step} de 2</span><span>{step === 1 ? 'Seus dados e seu carro' : 'Situação do veículo'}</span></div>
    <div className="progress-track" role="progressbar" aria-label="Progresso da avaliação" aria-valuemin={1} aria-valuemax={2} aria-valuenow={step}><span className="active" /><span className={step === 2 ? 'active' : ''} /></div>
    <form noValidate onSubmit={submit} aria-busy={busy}><fieldset className="form-fields" disabled={busy}>
