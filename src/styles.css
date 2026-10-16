@@ -214,3 +214,67 @@ input[type=checkbox] {width:19px;height:19px}
 @media(max-width:360px) {
  .vc-admin-lead-actions,.vc-admin-metrics {grid-template-columns:1fr}
 }
+
+
+/* Copy-led ValeCompra LP, guided by the four-block attention/conversion sequence. */
+.vc-hero-tag {display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid color-mix(in oklab,var(--primary) 40%,transparent);border-radius:60px;background:color-mix(in oklab,var(--primary) 11%,transparent);color:#f1d6a3;font-size:10px;line-height:1.5;font-weight:800;letter-spacing:.8px;margin-bottom:18px}
+.hero h1 {font-size:clamp(37px,4.05vw,58px);line-height:1.12;letter-spacing:-1.5px;font-weight:800;max-width:650px;text-wrap:balance}
+.hero-description {font-size:15px;line-height:1.75;max-width:535px;margin-top:22px;color:#edf1f2}
+.hero-description strong {font-weight:800;color:#fff}
+.vc-hero-context {max-width:505px;color:#d0dadf;margin-top:14px;font-size:13px;line-height:1.75}
+.vc-hero-context strong {color:#f1d4a1;font-weight:750}
+.hero .hero-actions {margin-top:24px}
+.hero .trust-list {max-width:555px;gap:13px 20px;margin-top:24px;flex-wrap:wrap}
+.hero .trust-item {font-size:11px;line-height:1.6;white-space:nowrap}
+.hero .hero-caption {margin-top:20px;max-width:490px;color:#c2cbd0;line-height:1.7}
+.vc-friction-section {background:linear-gradient(180deg,#111e28 0%,#172630 100%);border-top:1px solid #31414a;border-bottom:1px solid #31414a;padding:72px 0 67px}
+.vc-friction-heading {display:grid;grid-template-columns:1.12fr .88fr;align-items:end;gap:55px}
+.vc-friction-heading h2 {font-size:clamp(27px,3vw,39px);max-width:640px;line-height:1.22;letter-spacing:-.8px;font-weight:800;margin-top:12px;text-wrap:balance}
+.vc-friction-heading h2 span {color:var(--primary)}
+.vc-friction-heading>p {color:#bfccd1;font-size:13px;line-height:1.95;max-width:460px;padding-bottom:5px}
+.vc-friction-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:30px}
+.vc-friction-card {min-width:0;border-radius:13px;background:#111d27;border:1px solid #394850;padding:25px 24px;box-shadow:0 12px 32px rgba(0,0,0,.07)}
+.vc-friction-index {color:#d9b87a;font-size:11px;letter-spacing:1px;font-weight:800}
+.vc-friction-card h3 {font-size:16px;color:#f2f4f2;line-height:1.45;margin-top:14px;font-weight:750}
+.vc-friction-card p {color:#aebec5;font-size:12px;line-height:1.85;margin-top:11px}
+.vc-friction-bottom {display:flex;align-items:center;justify-content:space-between;gap:20px;border-radius:12px;margin-top:18px;padding:23px 27px;background:rgba(212,171,98,.08);border:1px solid rgba(216,170,96,.25)}
+.vc-friction-bottom strong {font-size:15px;line-height:1.5;color:#f4e4c5}
+.vc-friction-bottom p {color:#b5c6ce;font-size:12px;line-height:1.7;margin-top:5px}
+.vc-friction-bottom a {flex-shrink:0}
+.vc-vehicle-section {padding-top:76px}
+.vc-vehicle-section .center-heading {max-width:850px;margin-inline:auto}
+.vc-vehicle-section .section-heading {text-wrap:balance}
+.vc-vehicle-section .section-intro {max-width:650px;margin-inline:auto}
+.vc-vehicle-section .vehicle-card {border-radius:12px;min-height:205px;transition:border-color .2s,transform .2s}
+.vc-vehicle-section .vehicle-card:hover {border-color:rgba(218,179,105,.55);transform:translateY(-2px)}
+.paper-section .section-heading {max-width:880px;text-wrap:balance}
+.final-cta h2 {line-height:1.28;letter-spacing:-.4px}
+@media(max-width:1050px) {
+ .hero h1 {font-size:clamp(38px,4.2vw,47px)}
+ .hero-layout {gap:30px}
+ .vc-friction-heading {gap:30px}
+ .vc-friction-bottom a {font-size:12px}
+}
+@media(max-width:767px) {
+ .vc-hero-tag {font-size:9px;margin-bottom:13px;max-width:100%}
+ .hero h1 {font-size:clamp(31px,8vw,38px);letter-spacing:-.9px;line-height:1.15}
+ .hero-description {font-size:13px;line-height:1.76;margin-top:16px}
+ .vc-hero-context {font-size:12px;line-height:1.7;margin-top:12px}
+ .hero .trust-list {display:flex;flex-wrap:wrap;gap:7px 13px;margin-top:15px}
+ .hero .trust-item {white-space:normal;font-size:10px}
+ .hero .hero-caption {margin:13px 0 0;font-size:10px}
+ .vc-friction-section {padding:52px 0}
+ .vc-friction-heading,.vc-friction-grid {grid-template-columns:1fr}
+ .vc-friction-heading {gap:12px}
+ .vc-friction-heading h2 {font-size:29px}
+ .vc-friction-heading>p {font-size:12px}
+ .vc-friction-grid {gap:12px;margin-top:23px}
+ .vc-friction-card {padding:20px 21px}
+ .vc-friction-card h3 {font-size:15px;margin-top:9px}
+ .vc-friction-card p {margin-top:8px}
+ .vc-friction-bottom {align-items:stretch;flex-direction:column;padding:21px;gap:15px}
+ .vc-friction-bottom a {width:100%}
+ .vc-vehicle-section {padding-top:55px}
+ .vc-vehicle-section .vehicle-card {min-height:0}
+}
+@media(prefers-reduced-motion:reduce) {.vc-vehicle-section .vehicle-card {transition:none;transform:none}}
