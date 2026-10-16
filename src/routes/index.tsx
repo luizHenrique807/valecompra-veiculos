@@ -21,7 +21,7 @@ export const Route = createFileRoute('/')({
   }),
 });
 
-function EvaluateButton({ label = 'Quero avaliar meu carro', compact = false }: { label?: string; compact?: boolean }) {
+function EvaluateButton({ label = 'Quero vender meu carro', compact = false }: { label?: string; compact?: boolean }) {
   return (
     <Button asChild size={compact ? 'default' : 'lg'} className={compact ? 'vc-simple-button vc-simple-button-small' : 'vc-simple-button'}>
       <a href="#avaliacao">{label}<ArrowUpRight size={17} aria-hidden="true" /></a>
