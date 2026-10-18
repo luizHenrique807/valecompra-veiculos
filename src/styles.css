@@ -384,3 +384,45 @@ input[type=checkbox] {width:19px;height:19px}
  .vc-simple-header .vc-simple-button-small {padding-inline:8px!important;font-size:9px!important}
  .vc-simple-header .header-inner .logo-word {font-size:17px}
 }
+
+
+/* Botão WhatsApp público solicitado — mantém o formulário de avaliação intacto. */
+.vc-whatsapp-float {
+  position: fixed;
+  right: max(18px, env(safe-area-inset-right));
+  bottom: max(20px, env(safe-area-inset-bottom));
+  z-index: 70;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 54px;
+  padding: 12px 19px;
+  border-radius: 999px;
+  background: #17aa56;
+  color: #ffffff;
+  border: 1px solid #30d274;
+  box-shadow: 0 10px 28px rgba(0,0,0,.34), 0 3px 11px rgba(12,130,67,.22);
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  line-height: 1.25;
+  transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease;
+}
+.vc-whatsapp-float:hover {background:#128e49;transform:translateY(-2px);box-shadow:0 14px 32px rgba(0,0,0,.39)}
+.vc-whatsapp-float:focus-visible {outline:3px solid #f7d17b;outline-offset:4px}
+.vc-whatsapp-float svg {flex-shrink:0}
+@media (max-width: 767px) {
+  .vc-whatsapp-float {
+    right: max(13px, env(safe-area-inset-right));
+    bottom: max(14px, env(safe-area-inset-bottom));
+    min-height: 49px;
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+  .vc-whatsapp-float svg {width:21px;height:21px}
+}
+@media (prefers-reduced-motion: reduce) {
+  .vc-whatsapp-float {transition:none}
+  .vc-whatsapp-float:hover {transform:none}
+}

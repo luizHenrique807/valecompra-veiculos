@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
-import { ArrowRight, ArrowUpRight, BadgeCheck, CalendarClock, CheckCircle2, ClipboardCheck, FileWarning, MapPin, ShieldCheck, Wallet } from 'lucide-react';
+import { ArrowUpRight, BadgeCheck, CalendarClock, CheckCircle2, FileWarning, MapPin, MessageCircle, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Brand } from '@/components/valecompra/brand';
 import { LeadForm } from '@/components/valecompra/lead-form';
@@ -75,7 +75,6 @@ function Index() {
               <p className="eyebrow region-eyebrow"><MapPin size={15} aria-hidden="true" /> São José dos Campos · Jacareí · Caçapava · Taubaté</p>
               <span className="vc-simple-eyebrow">COMPRAMOS CARROS POPULARES E USADOS</span>
               <h1 id="vc-hero-title">Parcelas atrasadas, multas ou <span>IPVA vencido?</span></h1>
-              <p className="vc-simple-hero-question">Quer vender seu carro mesmo assim?</p>
               <p className="hero-description">Sabemos que vender um carro com pendências pode ser complicado. <strong>Conte a situação do seu veículo.</strong> A ValeCompra analisa se existe possibilidade de compra, sem compromisso.</p>
               <div className="hero-actions"><EvaluateButton /></div>
               <div className="trust-list" aria-label="Vantagens da avaliação">
@@ -137,6 +136,16 @@ function Index() {
           </div>
         </div>
       </footer>
+      <a
+        className="vc-whatsapp-float"
+        href="https://wa.me/5512988454439?text=Ol%C3%A1%21%20Quero%20vender%20meu%20carro%20e%20gostaria%20de%20saber%20como%20funciona%20a%20avalia%C3%A7%C3%A3o."
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Falar com a ValeCompra pelo WhatsApp: (12) 98845-4439"
+      >
+        <MessageCircle size={23} strokeWidth={2.3} aria-hidden="true" />
+        <span>Falar no WhatsApp</span>
+      </a>
       <PixelConsent />
     </>
   );
